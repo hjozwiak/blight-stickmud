@@ -13,8 +13,16 @@ local postamble = " &> /dev/null &"
 local var_preamble = "play -qV0 -v" .. volume_factor .. " "
 
 -- Play the given sound file, relative to the sounds foldr.
-function soundplayer.play_file(file)
-    local result = core:exec(file_preamble .. file .. postamble)
+function soundplayer.play_file(file, iterations)
+    if iterations > 0 then
+        actual = iterations - 1
+    elseif iterations == 0 then
+        actual = iterations
+    else
+        actual = "-" -- repeat indefinitely
+    end
+    local result = core:exec(file_preamble .. file .. " repeat " .. actual .. postamble)
+
 end
 
 -- Play the given synthesized sound, though the implementation is similar in spirit to the way in which files are played.
