@@ -6,7 +6,5 @@ package.path = os.getenv("PWD") .. "/src/?.lua;" .. package.path
 
 -- Load in the modules.
 require("config")
-local test = require "test"
 
--- blight:output("Welcome to the StickMUD experience for BlightMUD! Please type login to play.")
-test:say_hi()
+blight:output("Welcome to the StickMUD experience for BlightMUD! Please type login to play.")
