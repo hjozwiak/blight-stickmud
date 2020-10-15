@@ -14,14 +14,14 @@ local var_preamble = "play -qV0 -v" .. volume_factor .. " "
 
 -- Play the given sound file, relative to the sounds foldr.
 function soundplayer.play_file(file, iterations)
+    local actual = 0
     if iterations > 0 then
-        actual = iterations - 1
-    elseif iterations == 0 then
-        actual = iterations
+        local actual = iterations - 1
     else
         actual = "-" -- repeat indefinitely
     end
-    local result = core:exec(file_preamble .. file .. " repeat " .. actual .. postamble)
+    local result = core:exec(file_preamble .. file .. " repeat " .. actual .. postamble .. " echo $!")
+        return result:stdout()
 
 end
 
