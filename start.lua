@@ -8,7 +8,7 @@ cfg = require("config")
 sp = require("soundplayer")
 md = require("media")
 sv = require("synthvars")
-
+gauges = require("gauges")
 -- Initialize the GMCP interface.
 
 local function register_gmcp_mods()
