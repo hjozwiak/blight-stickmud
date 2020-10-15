@@ -7,6 +7,7 @@ package.path = os.getenv("PWD") .. "/src/?.lua;" .. package.path
 cfg = require("config")
 sp = require("soundplayer")
 md = require("media")
+sv = require("synthvars")
 
 -- Initialize the GMCP interface.
 
