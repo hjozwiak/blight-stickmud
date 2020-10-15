@@ -7,12 +7,12 @@ end
 local function process_vitals(data)
     blight:output(data)
     local obj = json.decode(data)
-    local hit = tonumber(obj["hp"])
-    local maxhit = tonumber(obj["maxhp"])
-    local spell = tonumber(obj["sp"])
-    local maxspell = tonumber(obj["maxsp"])
-    local fat = tonumber(obj["fp"])
-    local maxfat = tonumber(obj["maxfp"])
+    local hit = obj["hp"]
+    local maxhit = obj["maxhp"]
+    local spell = obj["sp"]
+    local maxspell = obj["maxsp"]
+    local fat = obj["fp"]
+    local maxfat = obj["maxfp"]
     local hit_percent = gauges.round((hit / maxhit) * 100)
     local fatigue_percent = gauges.round((fat / maxfat) * 100)
     local spell_percent = gauges.round((spell / maxspell) * 100)
