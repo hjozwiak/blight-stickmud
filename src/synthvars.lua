@@ -38,4 +38,8 @@ synthvars.fatigue = {
     [70] = "|sox -np synth pl A2 sq E3 tri A3 pl C#4 sq E4 delay 0 .05 .1 .15 .2 remix - fade 0 0.55 remix v0.4 v0.9",
     [80] = "|sox -np synth pl A2 sq E3 tri A3 pl C#4 sq E4 delay 0 .05 .1 .15 .2 remix - fade 0 0.55 remix v0.4 v0.9 pitch 300"
 }
+
+synthvars.misc = {
+    ["volume_change"] = "|sox -np synth .05 sq B5"
+}
 return synthvars
