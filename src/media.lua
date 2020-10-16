@@ -17,16 +17,17 @@ local function handle_play(data)
     elseif obj["name"] == playing["name"] then
         return
 
-    else
-
-        -- End the currently playing music
-        if obj["type"] == "music" then
-            local response = core:exec("kill " .. playing["pid"])
-            local newpid = sp.play_file(obj["name"], tonumber(obj["loops"]))
-            playing["name"] = obj["name"]
-            playing["pid"] = newpid
-        end
-    end
+end
 end
 gmcp.receive("Client.Media.Play", handle_play)
+
+local function handle_stop(data)
+    blight:output("We were asked to stop the media.")
+    core:exec("kill " .. playing["pid"])
+    playing = nil
+end
+
+gmcp.receive("Client.Media.Stop", handle_stop)
+
+
 return media
