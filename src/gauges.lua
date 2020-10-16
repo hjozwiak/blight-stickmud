@@ -10,21 +10,21 @@ end
 local function do_health(n)
     if n ~= oldhp then
         oldhp = n
-        sp.play_var(sv.health[n])
+        sp.play_var(sv.health[tonumber(n)])
     end
 end
 
 local function do_fp(n)
     if n ~= oldfp then
         oldfp = n
-        sp.play_var(sv.fatigue[n])
+        sp.play_var(sv.fatigue[tonumber(n)])
     end
 end
 
 local function do_sp(n)
     if n ~= oldsp then
         oldsp = n
-        sp.play_var(sv.spell[n])
+        sp.play_var(sv.spell[tonumber(n)])
     end
 end
 
