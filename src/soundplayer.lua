@@ -33,7 +33,6 @@ end
 
 -- Play the given synthesized sound, though the implementation is similar in spirit to the way in which files are played.
 function soundplayer.play_var(variable)
-    blight:output("Attempting " .. generate_var_preamble() .. string.format("%q", variable) .. postamble)
     core:exec(generate_var_preamble() .. string.format("%q", variable) .. postamble)
 end
 
