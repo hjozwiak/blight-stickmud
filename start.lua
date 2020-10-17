@@ -4,20 +4,24 @@
 package.path = os.getenv("PWD") .. "/src/?.lua;" .. package.path
 
 -- Load in the modules.
-cfg = require("config")
 sp = require("soundplayer")
 md = require("media")
 sv = require("synthvars")
 gauges = require("gauges")
+cfg = require("config")
+
 -- Initialize the GMCP interface.
 
-local function register_gmcp_mods()
-    for index, item in pairs(cfg.gmcp_modules) do
-        gmcp.register(item)
+local function register_gmcp_stuff()
+    for index, item in pairs(cfg.gmcp_stuff) do
+        gmcp.register(index)
+        if item ~= nil then
+            gmcp.receive(index, item)
+        end
     end
 end
 
-gmcp.on_ready(register_gmcp_mods)
+gmcp.on_ready(register_gmcp_stuff)
 
 function connect()
     blight:connect(cfg.host, cfg.port, cfg.tls)
