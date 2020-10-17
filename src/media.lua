@@ -12,7 +12,6 @@ function media.handle_play(data)
         initial["name"] = obj["name"]
         initial["pid"] = pid
         playing = initial
-        blight:output(playing["pid"])
     elseif obj["name"] == playing["name"] then
         return
 

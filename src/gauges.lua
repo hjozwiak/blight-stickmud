@@ -30,7 +30,6 @@ end
 
 -- The main processing function.
 function gauges.process_vitals(data)
-    blight:output(data)
     local obj = json.decode(data)
     local hit = tonumber(obj["hp"])
     local maxhit = tonumber(obj["maxhp"])
