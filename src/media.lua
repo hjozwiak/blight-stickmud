@@ -4,9 +4,8 @@ local media = {}
 
 local playing = nil
 
-local function handle_play(data)
-    blight:output(data)
-    obj = json.decode(data)
+function media.handle_play(data)
+    local obj = json.decode(data)
     if playing == nil then
         local initial = {}
         local pid = sp.play_file(obj["name"], tonumber(obj["loops"]))
@@ -17,17 +16,16 @@ local function handle_play(data)
     elseif obj["name"] == playing["name"] then
         return
 
+    end
 end
-end
-gmcp.receive("Client.Media.Play", handle_play)
 
-local function handle_stop(data)
-    blight:output("We were asked to stop the media.")
+function media.handle_stop(data)
+    if playing == nil then
+        return
+    end
     core:exec("kill " .. playing["pid"])
     playing = nil
 end
-
-gmcp.receive("Client.Media.Stop", handle_stop)
 
 
 return media

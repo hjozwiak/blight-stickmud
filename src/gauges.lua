@@ -29,7 +29,8 @@ local function do_sp(n)
 end
 
 -- The main processing function.
-local function process_vitals(data)
+function gauges.process_vitals(data)
+    blight:output(data)
     local obj = json.decode(data)
     local hit = tonumber(obj["hp"])
     local maxhit = tonumber(obj["maxhp"])
@@ -44,5 +45,4 @@ local function process_vitals(data)
     do_sp(spell_percent)
     do_fp(fat_percent)
 end
-gmcp.receive("Char.Vitals", process_vitals)
 return gauges
