@@ -8,6 +8,7 @@ sp = require("soundplayer")
 md = require("media")
 sv = require("synthvars")
 gauges = require("gauges")
+nav = require("navigation")
 cfg = require("config")
 
 -- Initialize the GMCP interface.
