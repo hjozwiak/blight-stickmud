@@ -4,6 +4,7 @@
 package.path = os.getenv("PWD") .. "/src/?.lua;" .. package.path
 
 -- Load in the modules.
+misc = require("misc")
 sp = require("soundplayer")
 md = require("media")
 sv = require("synthvars")
@@ -16,7 +17,7 @@ cfg = require("config")
 local function register_gmcp_stuff()
     for index, item in pairs(cfg.gmcp_stuff) do
         gmcp.register(index)
-        if item ~= nil then
+        if item ~= misc.noop then
             gmcp.receive(index, item)
         end
     end
