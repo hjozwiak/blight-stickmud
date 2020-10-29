@@ -2,6 +2,16 @@ local gauges = {}
 local oldhp = 0
 local oldsp = 0
 local oldfp = 0
+local oldenemyhp = nil
+-- Map an enemy's status to a percentage of health
+local enemy_status_map = {
+    ["mortally wounded"] = 0,
+    ["nearly dead"] = 4,
+    ["in very bad shape"] = 10,
+    ["in bad shape"] = 20,
+    ["not in good shape"] = 50,
+    ["slightly hurt"] = 95
+}
 
 local function nearest_percentage(n)
     return n - n % 10
@@ -43,5 +53,12 @@ function gauges.process_vitals(data)
     do_health(hit_percent)
     do_sp(spell_percent)
     do_fp(fat_percent)
+end
+
+function gauges.do_enemy(health)
+    if oldenemyhp ~= health then
+        oldenemyhp = health
+        sp.play_var("|sox -np synth 0.06 tri " .. enemy_status_map[health] * 10 + 200 .. " fade 0.01 0.09")
+    end
 end
 return gauges
