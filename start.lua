@@ -27,9 +27,9 @@ end
 gmcp.on_ready(register_gmcp_stuff)
 
 function connect()
-    blight:connect(cfg.host, cfg.port, cfg.tls)
+    mud.connect(cfg.host, cfg.port, cfg.tls)
 end
 
-blight:add_alias("^login$", connect)
+alias.add("^login$", connect)
 
 blight:output("Welcome to the StickMUD experience for BlightMUD! Please type login to play.")
