@@ -50,8 +50,8 @@ local function decrement()
     end
 end
 
-blight:bind("alt-?", increment)
+blight.bind("alt-?", increment)
 
-blight:bind("alt->", decrement)
+blight.bind("alt->", decrement)
 
 return soundplayer
