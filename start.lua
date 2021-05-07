@@ -32,4 +32,4 @@ end
 
 alias.add("^login$", connect)
 
-blight:output("Welcome to the StickMUD experience for BlightMUD! Please type login to play.")
+blight.output("Welcome to the StickMUD experience for BlightMUD! Please type login to play.")
